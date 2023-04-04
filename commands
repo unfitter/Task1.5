@@ -1,0 +1,8 @@
+telnet www.google.com 80
+
+curl -k -L -s --compressed -X GET https://api.stackexchange.com/2.3/questions/4495473/answers\?order\=desc\&sort\=activity\&site\=stackoverflow > data.txt
+grep -o '"link":"[^"]*"' data.txt > links.txt
+cut -d':' -f2- links.txt > urls.txt
+sed -i 's/"//g' urls.txt
+
+
